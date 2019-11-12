@@ -12,7 +12,7 @@ namespace pluralSight.Models
             {
                 new Category{CategoryId=1, CategoryName="Fruit pies", Description="All-fruity pies"},
                 new Category{CategoryId=2, CategoryName="Cheesecakes", Description="Cheesy all the way"},
-                new Category{CategoryId=3, CategoryName="Seasonal pies", Description="Get in the mood for a seasonal pie"},
+                new Category{CategoryId=3, CategoryName="Seasonal pies", Description="Get in the mood for a seasonal pie"}
             };
 
     }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using pluralSight.Models;
+using pluralSight.ViewModels;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -20,10 +21,19 @@ namespace pluralSight.Controllers
             _categoryRepository = categoryRepository;
         }
 
-        public ViewResult List()
+        // GET: /<controller>/
+        //public ViewResult List()
+        public IActionResult List()
+        
         {
-            ViewBag.CurrentCategory = "Cheese cakes";
-            return View(_pieRepository.AllPies);
+            //ViewBag.CurrentCategory = "Cheese cakes";
+
+            //return View(_pieRepository.AllPies);
+            PiesListViewModel piesListViewModel = new PiesListViewModel();
+            piesListViewModel.Pies = _pieRepository.AllPies;
+
+            piesListViewModel.CurrentCategory = "Cheese cakes";
+            return View(piesListViewModel);
         }
     }
 }

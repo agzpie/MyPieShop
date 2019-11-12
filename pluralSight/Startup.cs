@@ -4,10 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using pluralSight.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using pluralSight.Models;
 
 namespace pluralSight
 {
@@ -16,11 +16,13 @@ namespace pluralSight
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IPieRepository, MockPieRepository>();
+            services.AddControllersWithViews(); // necessary for MVC
+
             services.AddScoped<ICategoryRepository, MockCategoryRepository>();
+            services.AddScoped<IPieRepository, MockPieRepository>();
+            
             //services.AddTransient
             //services.AddSingleton()
-            services.AddControllersWithViews(); // necessary for MVC
             services.AddRazorPages();
         }
 
@@ -33,8 +35,8 @@ namespace pluralSight
             }
 
             app.UseHttpsRedirection();
-            app.UseDeveloperExceptionPage();
-            app.UseStatusCodePages(); //i.e. error 404
+           // app.UseDeveloperExceptionPage();
+           // app.UseStatusCodePages(); //i.e. error 404
             app.UseStaticFiles();
 
             app.UseRouting();
